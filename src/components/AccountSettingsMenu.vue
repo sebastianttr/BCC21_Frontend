@@ -8,10 +8,10 @@
 
                 <div class="text-h6 q-mt-md q-mb-xs">{{userdata.username}}</div>
             </div>
-            <div class="fit column justify-start items-start content-start">
+            <div class="fit column justify-start items-start content-start" >
                 <div class="text-h7 q-ml-sm">ROLES</div>
-                <div class="fit row wrap justify-center items-start content-start" style="max-width:300px;">
-                    <q-chip v-for="item,index in userdata.roles" :key="index+200" square  text-color="white" :style="'background-color:#'+item.color">
+                <div class="fit row wrap justify-center items-start content-start truncate-chip-labels" style="max-width: 300px">
+                    <q-chip v-for="item,index in userdata.roles" :key="index+200" square  text-color="white" :style="'word-wrap:break-word;background-color:#'+item.color">
                         {{item.name.toUpperCase()}}
                     </q-chip>                    
                 </div>
@@ -107,6 +107,10 @@ export default {
         border-radius: 15px;
         background-color: #23272A;
         color:white;
+    }
+
+    .truncate-chip-labels > .q-chip{
+        max-width: 140px
     }
 
 </style>

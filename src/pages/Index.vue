@@ -18,11 +18,30 @@
             <q-btn style="background-color: #5663F7;" class="q-mt-md text-h6" icon="calendar_today" rounded label="SET BIRTHDAY" @click="toggleDialog()" />
           </div>
 
-           <div>
+          <div>
             <div class="text-h4">
               Daily Schedule
             </div>
-            <div class="q-mt-sm q-mb-lg">{calendar in the works}</div>
+            <div class="q-mt-sm q-mb-lg q-ml-none">
+              <calendar-item 
+                v-for="(item,index) in calendar" 
+                :key="index+2000" 
+                :title="getLectureName(item.description)"
+                :from="composedTimeString(item.start)" 
+                :to="composedTimeString(item.end)"
+                :location="item.location"
+                :lecturer="getLecturorName(item.description)"
+                :color="getCourseColor(item.description)"
+              />
+              <calendar-item
+                title="2D Game Mathematics and Physics"
+                from="15:40" 
+                to="23:59"
+                location="Georgs Dungeon"
+                lecturer="Zötloterer"
+                color="#ABDDE2"
+              />
+            </div>
           </div>
 
           <div>
@@ -31,7 +50,6 @@
             </div>
             <div class="text-h6 q-mt-sm q-mb-lg">Nothing good to know at the moment.</div>
           </div>
-
           
       </div>
 
@@ -43,12 +61,14 @@
 
 <script>
 import { defineComponent } from 'vue';
+import moment from 'moment';
 
 import BirthDateSetterDialog from 'components/BirthDateSetterDialog'
+import CalendarItem from 'components/CalendarItem'
 
 export default defineComponent({
   name: 'PageIndex',
-  components: { BirthDateSetterDialog },
+  components: { BirthDateSetterDialog, CalendarItem },
   data(){
       return {
           loggedIn:false,
@@ -59,6 +79,9 @@ export default defineComponent({
           get userdata() {
             return JSON.parse(localStorage.getItem('userdata'));
           },
+          get calendar(){
+            return JSON.parse(localStorage.getItem('calendar'));
+          }
       }
   },
   computed:{
@@ -86,8 +109,43 @@ export default defineComponent({
     toggleDialog(){
       this.dialogOpen = true
     },
-    sendAnnouncment(){
+    getLectureName(lectureInfo){
+      return lectureInfo.substring(lectureInfo.indexOf("Bezeichnung: ")+13,lectureInfo.indexOf("\nLehrfach:"))
+    },
+    getLecturorName(lectureInfo){
+      return lectureInfo.substring(lectureInfo.indexOf("Vortragende: ")+13,lectureInfo.indexOf(",\nGruppen:"))
+    },
+    getCourseColor(lectureInfo){
+      var lectureName = this.getLectureName(lectureInfo)
 
+      switch(lectureName){
+        case "Client-Side Coding":
+          return "#B1D4BF"
+        case "Game Design and Digital Storytelling":
+          return "#F8DCB3"
+        case "2D Game Mathematics and Physics":
+          return "#ABDDE2"
+        case "Graphics Design":
+          return "#D2C6E3"
+        case "Agile Software Life Cycle Management":
+          return "#D1B4A4"
+        case "2D Game Graphics":
+          return "#97B5E1"
+        case "2D Browser Game Coding":
+          return "#E3E79A"
+        case "Introduction to Web Technologies":
+          return "#FCD0E9"
+        case "Design Thinking":
+          return "#F4B0AD"
+        default:
+          return "#384045"
+      }
+
+    },
+    composedTimeString(time){
+      var time = time.substring(time.indexOf("T")+1,time.indexOf("."))
+      var timeMoment = moment(time,"hh:mm:ss")
+      return `${timeMoment.hour()}:${timeMoment.minute()}`;
     }
   },
   updated(){
