@@ -33,6 +33,11 @@
                 :lecturer="getLecturorName(item.description)"
                 :color="getCourseColor(item.description)"
               />
+
+              <div v-if="calendar.length === 0" class="text-h5">
+                  No events today. Yay!
+              </div>
+              <!--
               <calendar-item
                 title="2D Game Mathematics and Physics"
                 from="15:40" 
@@ -41,6 +46,7 @@
                 lecturer="Zötloterer"
                 color="#ABDDE2"
               />
+              -->
             </div>
           </div>
 
@@ -65,6 +71,11 @@ import moment from 'moment';
 
 import BirthDateSetterDialog from 'components/BirthDateSetterDialog'
 import CalendarItem from 'components/CalendarItem'
+
+
+function tcf(num){   //
+  return (num < 10) ? `0${num}` : num
+}
 
 export default defineComponent({
   name: 'PageIndex',
@@ -140,12 +151,12 @@ export default defineComponent({
         default:
           return "#384045"
       }
-
     },
+    
     composedTimeString(time){
       var time = time.substring(time.indexOf("T")+1,time.indexOf("."))
       var timeMoment = moment(time,"hh:mm:ss")
-      return `${timeMoment.hour()}:${timeMoment.minute()}`;
+      return `${tcf(timeMoment.hour()+2)}:${tcf(timeMoment.minute())}`;
     }
   },
   updated(){

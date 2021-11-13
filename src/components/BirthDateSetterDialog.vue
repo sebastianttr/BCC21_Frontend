@@ -8,7 +8,7 @@
             You do not have to specify the year.
         </div>
             <div class="q-pa-md">
-            <div class="q-gutter-md row items-start">
+            <div class="q-gutter-md it row justify-center items-start content-between">
                 <q-date
                 v-model="userdata.birthday"
                 dark

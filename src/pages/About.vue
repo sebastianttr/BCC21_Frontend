@@ -10,7 +10,7 @@
             Sebastian Tatar
           </div>
           <div class="text-h6 q-mt-sm">
-            Web: <a href="https://wiredless.io"> https://wiredless.io </a>
+            Web: <a class="text-primary" href="https://wiredless.io"> https://wiredless.io </a>
           </div>
       </div>
 
@@ -24,7 +24,7 @@
             Georg Becker
           </div>
           <div class="text-h6 q-mt-sm">
-            Web: <a href=" https://www.shellrider.com"> https://www.shellrider.com </a>
+            Web: <a class="text-primary" href=" https://www.shellrider.com"> https://www.shellrider.com </a>
           </div>
       </div>
   </q-page>

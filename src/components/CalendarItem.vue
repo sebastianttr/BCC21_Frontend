@@ -1,9 +1,9 @@
 <template>
     <div class=" row justify-start items-stretch content-start q-ma-sm cardStyle" style="margin-left:-10px;">
         <div class="col-auto column wrap justify-center items-center content-stretch q-ml-sm q-pa-sm timeCard">
-            <div style="font-size:20px;">{{from}}</div>
-            <div style="font-size:20px;">|</div>
-            <div style="font-size:20px;">{{to}}</div>
+            <div style="font-size:25px;">{{from}}</div>
+            <div style="font-size:25px;">|</div>
+            <div style="font-size:25px;">{{to}}</div>
         </div>
         
         <div class="col column wrap justify-stretch items-stretch content-stretch q-pa-sm q-pl-md q-pr-lg infoCard text-dark" :style="'background-color:'+color">

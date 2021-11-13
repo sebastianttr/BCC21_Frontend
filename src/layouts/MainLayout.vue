@@ -81,6 +81,12 @@ const linksList = [
     to: "/embedded"
   },
   {
+    title: 'BCC Contents',
+    icon: 'folder',
+    link: 'contentDelivery',
+    to: "/contentDelivery"
+  },
+  {
     title: 'About',
     icon: 'help',
     link: 'about',
@@ -123,7 +129,7 @@ export default defineComponent({
       },
       
       isLoggedIn(){
-        var userdata = localStorage.getItem('userdata')
+        let userdata = localStorage.getItem('userdata')
         return userdata == null || ""
       }
     }

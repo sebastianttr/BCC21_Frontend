@@ -2,32 +2,34 @@
     <q-menu  class="menuCard font_sans">
         <div v-if="loggedIn" class="fit column justify-center items-center content-center q-pa-md" >
             <div class="column justify-center items-center content-center q-ma-md" style="width:250px;">
-                <q-avatar size="72px">
+                <q-avatar size="120px">
                     <img :src="userdata.avatarURL">
                 </q-avatar>
 
-                <div class="text-h6 q-mt-md q-mb-xs">{{userdata.username}}</div>
+                <div class="text-h4 q-mt-md q-mb-xs">{{userdata.username}}</div>
             </div>
             <div class="fit column justify-start items-start content-start" >
-                <div class="text-h7 q-ml-sm">ROLES</div>
                 <div class="fit row wrap justify-center items-start content-start truncate-chip-labels" style="max-width: 300px">
                     <q-chip v-for="item,index in userdata.roles" :key="index+200" square  text-color="white" :style="'word-wrap:break-word;background-color:#'+item.color">
-                        {{item.name.toUpperCase()}}
+                        <div class="ellipsis">
+                            {{item.name.toUpperCase()}}
+                            <q-tooltip>{{item.name.toUpperCase()}}</q-tooltip>
+                        </div>
                     </q-chip>                    
                 </div>
                 
                 <div class="fit column justify-center items-center content-center">
                     <hr style="background-color:gray; width:95%;margin-bottom:20px; "> 
                     <div class="fit column content-start items-center">
-                        <div class="fit row  content-start items-center q-pa-xs accountCard" style="cursor: pointer;" @click="openDialogCallback()">
-                            <q-icon name="calendar_today" class="q-ml-sm" />
-                            <div class="text-subtitle1 q-ml-sm">
+                        <div class="fit row  content-start items-center q-pa-xs accountCard" v-close-popup style="cursor: pointer;" @click="openDialogCallback()">
+                            <q-icon name="calendar_today" size="xs" class="q-ml-sm" />
+                            <div class="text-h6 q-ml-sm" >
                                 Set birth date
                             </div>
                         </div>
                         <div class="fit row  content-start items-center q-pa-xs accountCard" style="cursor: pointer;" @click="logout">
-                            <q-icon name="logout" class="q-ml-sm" />
-                            <div class="text-subtitle1 q-ml-sm">
+                            <q-icon name="logout" size="xs" class="q-ml-sm" />
+                            <div class="text-h6 q-ml-sm">
                                 Log out
                             </div>
                         </div>

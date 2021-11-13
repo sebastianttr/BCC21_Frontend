@@ -33,8 +33,8 @@
                     type="textarea"
                 />
                 <div class="fit row wrap justify-end items-end content-start q-mt-md">
-                    <q-select rounded dark standout v-model="model" class="q-mr-sm" :options="channels" label="Select channel" label-color="white" />
-                    <q-btn style="background-color: #5663F7; margins-left:10px;" rounded  class="text-h6" label="SEND" @click="sendAnnouncment()" />
+                    <q-select rounded dark standout v-model="model" class="q-mr-sm q-mb-sm" :options="channels" label="Select channel" label-color="white" />
+                    <q-btn style="background-color: #5663F7; margins-left:10px;" rounded  class="text-h6  q-mb-sm" label="SEND" @click="sendAnnouncment()" />
                 </div>
             </div>
         </div>

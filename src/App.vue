@@ -15,11 +15,12 @@ export default defineComponent({
     .then(data => {
       localStorage.setItem('channels',JSON.stringify(data))
     })
+
     
     if(params.get("userdata") == null || ""){
       try{
-        var userRoles = JSON.parse(localStorage.getItem("userdata")).roles
-        var calendar = await this.getCalendar(userRoles)
+        let userRoles = JSON.parse(localStorage.getItem("userdata")).roles
+        let calendar = await this.getCalendar(userRoles)
         localStorage.setItem("calendar",JSON.stringify(calendar))
       }
       catch(e){
@@ -30,18 +31,16 @@ export default defineComponent({
     else {
       localStorage.setItem('userdata', atob(params.get("userdata")));
 
-      var userRoles = JSON.parse(localStorage.getItem("userdata")).roles
-      var calendar = await this.getCalendar(userRoles)
+      let userRoles = JSON.parse(localStorage.getItem("userdata")).roles
+      let calendar = await this.getCalendar(userRoles)
       localStorage.setItem("calendar",JSON.stringify(calendar))
-      var newURL = window.location.href.split("?")[0];
+      let newURL = window.location.href.split("?")[0];
       window.history.pushState('object', document.title, newURL);
-
     }
-
   },
   methods:{
     isLoggedIn(){
-      var userdata = localStorage.getItem('userdata')
+      let userdata = localStorage.getItem('userdata')
       return userdata == null || ""
     },
     async getCalendar(userRoles){
@@ -66,7 +65,7 @@ export default defineComponent({
       })
 
       */
-      const response = await fetch("http://localhost:8084/getDailyCalendar?group=" + ((isGroupA)?"a":"b"));
+      const response = await fetch("http://localhost:8084/getCalendar?group=" + ((isGroupA)?"a":"b") + "&type=daily");
       const calendar = await response.json();
       return calendar;
       
