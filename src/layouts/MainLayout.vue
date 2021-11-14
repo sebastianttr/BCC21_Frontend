@@ -8,7 +8,7 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawer"
+          @click="toggleLeftDrawer()"
           v-if="!isLoggedIn()"
         />
 
@@ -25,7 +25,6 @@
     
     <q-drawer
       v-model="leftDrawerOpen"
-      show-if-above
       dark
     >
       <q-list>
@@ -107,32 +106,26 @@ export default defineComponent({
   },
   methods:{
     toggleDialog(){
-        //console.log("Opening dialog")
-        this.dialogOpen = true
-      },
+      //console.log("Opening dialog")
+      this.dialogOpen = true
+    },
+    toggleLeftDrawer () {
+      this.leftDrawerOpen = !this.leftDrawerOpen
+    },
+    isLoggedIn(){
+      let userdata = localStorage.getItem('userdata')
+      return userdata == null || ""
+    }
   },
   data(){
     return{
       dialogOpen:false,
+      essentialLinks: linksList,
+      leftDrawerOpen:false
     }
   },
-  setup () {
-    const leftDrawerOpen = ref(false)
-    const dialogOpen = ref(false)
-
-    return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      },
-      
-      isLoggedIn(){
-        let userdata = localStorage.getItem('userdata')
-        return userdata == null || ""
-      }
-    }
+  beforeMount(){
+    this.leftDrawerOpen = !this.isLoggedIn();
   }
 })
 </script>

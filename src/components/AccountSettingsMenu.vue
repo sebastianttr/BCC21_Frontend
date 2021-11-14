@@ -27,7 +27,7 @@
                                 Set birth date
                             </div>
                         </div>
-                        <div class="fit row  content-start items-center q-pa-xs accountCard" style="cursor: pointer;" @click="logout">
+                        <div class="fit row  content-start items-center q-pa-xs accountCard" style="cursor: pointer;" @click="logout()">
                             <q-icon name="logout" size="xs" class="q-ml-sm" />
                             <div class="text-h6 q-ml-sm">
                                 Log out
@@ -79,15 +79,6 @@ export default {
         login(){
             window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=893113878685306930&redirect_uri=http%3A%2F%2Flocalhost%3A8084&response_type=code&scope=identify%20email%20connections%20guilds';
         },
-        goToManageAccounts(){
-
-        },
-        goToAddAccounts(){
-
-        },
-        selectAccount(){
-
-        }
     }
     
 }
