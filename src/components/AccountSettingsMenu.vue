@@ -74,10 +74,10 @@ export default {
     methods:{
         logout(){
             localStorage.removeItem("userdata")
-            window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=893113878685306930&redirect_uri=http%3A%2F%2Flocalhost%3A8084&response_type=code&scope=identify%20email%20connections%20guilds';
+            window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=893113878685306930&redirect_uri=https%3A%2F%2Fbccbackend.wiredless.io&response_type=code&scope=identify%20email%20connections%20guilds';
         },
         login(){
-            window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=893113878685306930&redirect_uri=http%3A%2F%2Flocalhost%3A8084&response_type=code&scope=identify%20email%20connections%20guilds';
+            window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=893113878685306930&redirect_uri=https%3A%2F%2Fbccbackend.wiredless.io&response_type=code&scope=identify%20email%20connections%20guilds';
         },
     }
     

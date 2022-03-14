@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-md q-pt-lg font_sans pageStyle" >
-    
+
         <div v-if="isScruffy()">
             <div class="text-h4">
                 Send normal announcement to everyone.
@@ -22,7 +22,7 @@
                 <q-btn  style="background-color: #5663F7;" rounded  class="text-h6 q-mb-sm" label="SEND" @click="sendAnnouncment()" />
             </div>
         </div>
-     
+
       <q-dialog v-model="dialogOpen" position="bottom" >
         <birth-date-setter-dialog :userdata="userdata" />
       </q-dialog>
@@ -62,7 +62,7 @@ export default defineComponent({
 
       return userdata != null || ""
     },
-    
+
   },
   methods:{
     isScruffy(){
@@ -72,7 +72,7 @@ export default defineComponent({
 
       return hasRole
     },
-    
+
     sendAnnouncment(){
         const channels = JSON.parse(localStorage.getItem('channels'))
         const selectedChannelID = channels.find(item => item.channelName == this.model).channelId
@@ -85,7 +85,7 @@ export default defineComponent({
             }
         )
 
-        fetch("http://localhost:8084/notify",{
+        fetch("https://bccbackend.wiredless.io/notify",{
             method:"POST",
             body: postBody,
             headers: {

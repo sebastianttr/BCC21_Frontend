@@ -2,7 +2,7 @@
   <q-page class="flex q-pa-md q-pt-lg font_sans pageStyle" >
       <div v-if="!isLoggedIn" class="q-mt-lg q-mb-sm">
         <div class="text-h4">
-          Hmmm ...  You are not logged in. 
+          Hmmm ...  You are not logged in.
         </div>
         <div class="text-h6 q-mt-sm">
           Press on the user icon on the top-right, or ...
@@ -23,11 +23,11 @@
               Daily Schedule
             </div>
             <div class="q-mt-sm q-mb-lg q-ml-none">
-              <calendar-item 
-                v-for="(item,index) in calendar" 
-                :key="index+2000" 
+              <calendar-item
+                v-for="(item,index) in calendar"
+                :key="index+2000"
                 :title="getLectureName(item.description)"
-                :from="composedTimeString(item.start)" 
+                :from="composedTimeString(item.start)"
                 :to="composedTimeString(item.end)"
                 :location="item.location"
                 :lecturer="getLecturorName(item.description)"
@@ -40,7 +40,7 @@
               <!--
               <calendar-item
                 title="2D Game Mathematics and Physics"
-                from="15:40" 
+                from="15:40"
                 to="23:59"
                 location="Georgs Dungeon"
                 lecturer="Zötloterer"
@@ -56,7 +56,7 @@
             </div>
             <div class="text-h6 q-mt-sm q-mb-lg">Nothing good to know at the moment.</div>
           </div>
-          
+
       </div>
 
       <q-dialog v-model="dialogOpen" position="bottom" >
@@ -104,7 +104,7 @@ export default defineComponent({
 
       return userdata != null || ""
     },
-    
+
   },
   methods:{
     isScruffy(){
@@ -115,7 +115,7 @@ export default defineComponent({
       return hasRole
     },
     login(){
-      window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=893113878685306930&redirect_uri=http%3A%2F%2Flocalhost%3A8084&response_type=code&scope=identify%20email%20connections%20guilds';
+      window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=893113878685306930&redirect_uri=https%3A%2F%2Fbccbackend.wiredless.io&response_type=code&scope=identify%20email%20connections%20guilds';
     },
     toggleDialog(){
       this.dialogOpen = true
@@ -152,7 +152,7 @@ export default defineComponent({
           return "#384045"
       }
     },
-    
+
     composedTimeString(time){
       var time = time.substring(time.indexOf("T")+1,time.indexOf("."))
       var timeMoment = moment(time,"hh:mm:ss")

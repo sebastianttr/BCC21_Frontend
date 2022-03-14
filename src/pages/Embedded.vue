@@ -1,8 +1,8 @@
 <template>
   <q-page class="q-pa-md q-pt-lg font_sans pageStyle" >
-    
+
         <div v-if="isScruffy()">
-            
+
             <div class="text-h4">
                 Send embedded announcement to everyone.
             </div>
@@ -44,10 +44,10 @@
                 You cannot make announcements, because you are not a scruffy!
             </div>
             <div class="text-h6">
-                If there is the need to annouce something, contact  one of the scruffies. 
-            </div>            
+                If there is the need to annouce something, contact  one of the scruffies.
+            </div>
         </div>
-     
+
       <q-dialog v-model="dialogOpen" position="bottom" >
         <birth-date-setter-dialog :userdata="userdata" />
       </q-dialog>
@@ -89,7 +89,7 @@ export default defineComponent({
 
       return userdata != null || ""
     },
-    
+
   },
   methods:{
     isScruffy(){
@@ -99,7 +99,7 @@ export default defineComponent({
 
       return hasRole
     },
-    
+
     sendAnnouncment(){
         const channels = JSON.parse(localStorage.getItem('channels'))
         const selectedChannelID = channels.find(item => item.channelName == this.model).channelId
@@ -113,7 +113,7 @@ export default defineComponent({
             }
         )
 
-        fetch("http://localhost:8084/notifyEmbedded",{
+        fetch("https://bccbackend.wiredless.io/notifyEmbedded",{
             method:"POST",
             body: postBody,
             headers: {

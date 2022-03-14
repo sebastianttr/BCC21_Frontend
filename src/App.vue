@@ -7,16 +7,16 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'App',
   async mounted(){
-    let uri = window.location.search.substring(1); 
+    let uri = window.location.search.substring(1);
     let params = new URLSearchParams(uri);
 
-    fetch("http://localhost:8084/getAllChannels")
+    fetch("https://bccbackend.wiredless.io/getAllChannels")
     .then(response => response.json())
     .then(data => {
       localStorage.setItem('channels',JSON.stringify(data))
     })
 
-    
+
     if(params.get("userdata") == null || ""){
       try{
         let userRoles = JSON.parse(localStorage.getItem("userdata")).roles
@@ -65,10 +65,10 @@ export default defineComponent({
       })
 
       */
-      const response = await fetch("http://localhost:8084/getCalendar?group=" + ((isGroupA)?"a":"b") + "&type=daily");
+      const response = await fetch("https://bccbackend.wiredless.io/getCalendar?group=" + ((isGroupA)?"a":"b") + "&type=daily");
       const calendar = await response.json();
       return calendar;
-      
+
     }
   },
 })
